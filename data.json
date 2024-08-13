@@ -1,0 +1,279 @@
+{
+  "products": [
+    {
+      "id": 11,
+      "title": "Annibale Colombo Bed",
+      "price": 1899.99,
+      "rating": 4.14,
+      "discountPercentage": 0.29,
+      "thumbnail": "https://cdn.dummyjson.com/products/images/furniture/Annibale%20Colombo%20Bed/thumbnail.png",
+      "category": "furniture",
+      "brand": "Annibale Colombo"
+    },
+    {
+      "id": 12,
+      "title": "Annibale Colombo Sofa",
+      "price": 2499.99,
+      "rating": 3.08,
+      "discountPercentage": 18.54,
+      "thumbnail": "https://cdn.dummyjson.com/products/images/furniture/Annibale%20Colombo%20Sofa/thumbnail.png",
+      "category": "furniture",
+      "brand": "Annibale Colombo"
+    },
+    {
+      "id": 13,
+      "title": "Bedside Table African Cherry",
+      "price": 299.99,
+      "rating": 4.48,
+      "discountPercentage": 9.58,
+      "thumbnail": "https://cdn.dummyjson.com/products/images/furniture/Bedside%20Table%20African%20Cherry/thumbnail.png",
+      "category": "furniture",
+      "brand": "Furniture Co."
+    },
+    {
+      "id": 14,
+      "title": "Knoll Saarinen Executive Conference Chair",
+      "price": 499.99,
+      "rating": 4.11,
+      "discountPercentage": 15.23,
+      "thumbnail": "https://cdn.dummyjson.com/products/images/furniture/Knoll%20Saarinen%20Executive%20Conference%20Chair/thumbnail.png",
+      "category": "furniture",
+      "brand": "Knoll"
+    },
+    {
+      "id": 15,
+      "title": "Wooden Bathroom Sink With Mirror",
+      "price": 799.99,
+      "rating": 3.26,
+      "discountPercentage": 11.22,
+      "thumbnail": "https://cdn.dummyjson.com/products/images/furniture/Wooden%20Bathroom%20Sink%20With%20Mirror/thumbnail.png",
+      "category": "furniture",
+      "brand": "Bath Trends"
+    },
+    {
+      "id": 16,
+      "title": "Apple",
+      "price": 1.99,
+      "rating": 2.96,
+      "discountPercentage": 1.97,
+      "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Apple/thumbnail.png",
+      "category": "groceries"
+    },
+    {
+      "id": 17,
+      "title": "Beef Steak",
+      "price": 12.99,
+      "rating": 2.83,
+      "discountPercentage": 17.99,
+      "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Beef%20Steak/thumbnail.png",
+      "category": "groceries"
+    },
+    {
+      "id": 18,
+      "title": "Cat Food",
+      "price": 8.99,
+      "rating": 2.88,
+      "discountPercentage": 9.57,
+      "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Cat%20Food/thumbnail.png",
+      "category": "groceries"
+    },
+    {
+      "id": 19,
+      "title": "Chicken Meat",
+      "price": 9.99,
+      "rating": 4.61,
+      "discountPercentage": 10.46,
+      "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Chicken%20Meat/thumbnail.png",
+      "category": "groceries"
+    },
+    {
+      "id": 20,
+      "title": "Cooking Oil",
+      "price": 4.99,
+      "rating": 4.01,
+      "discountPercentage": 18.89,
+      "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Cooking%20Oil/thumbnail.png",
+      "category": "groceries"
+    },
+    {
+      "id": 21,
+      "title": "Cucumber",
+      "price": 1.49,
+      "rating": 4.71,
+      "discountPercentage": 11.44,
+      "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Cucumber/thumbnail.png",
+      "category": "groceries"
+    },
+    {
+      "id": 22,
+      "title": "Dog Food",
+      "price": 10.99,
+      "rating": 2.74,
+      "discountPercentage": 18.15,
+      "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Dog%20Food/thumbnail.png",
+      "category": "groceries"
+    },
+    {
+      "id": 23,
+      "title": "Eggs",
+      "price": 2.99,
+      "rating": 4.46,
+      "discountPercentage": 5.8,
+      "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Eggs/thumbnail.png",
+      "category": "groceries"
+    },
+    {
+      "id": 24,
+      "title": "Fish Steak",
+      "price": 14.99,
+      "rating": 4.83,
+      "discountPercentage": 7,
+      "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Fish%20Steak/thumbnail.png",
+      "category": "groceries"
+    },
+    {
+      "id": 25,
+      "title": "Green Bell Pepper",
+      "price": 1.29,
+      "rating": 4.28,
+      "discountPercentage": 15.5,
+      "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Green%20Bell%20Pepper/thumbnail.png",
+      "category": "groceries"
+    },
+    {
+      "id": 26,
+      "title": "Green Chili Pepper",
+      "price": 0.99,
+      "rating": 4.43,
+      "discountPercentage": 18.51,
+      "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Green%20Chili%20Pepper/thumbnail.png",
+      "category": "groceries"
+    },
+    {
+      "id": 27,
+      "title": "Honey Jar",
+      "price": 6.99,
+      "rating": 3.5,
+      "discountPercentage": 1.91,
+      "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Honey%20Jar/thumbnail.png",
+      "category": "groceries"
+    },
+    {
+      "id": 28,
+      "title": "Ice Cream",
+      "price": 5.49,
+      "rating": 3.77,
+      "discountPercentage": 7.58,
+      "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Ice%20Cream/thumbnail.png",
+      "category": "groceries"
+    },
+    {
+      "id": 29,
+      "title": "Juice",
+      "price": 3.99,
+      "rating": 3.41,
+      "discountPercentage": 5.45,
+      "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Juice/thumbnail.png",
+      "category": "groceries"
+    },
+    {
+      "id": 30,
+      "title": "Kiwi",
+      "price": 2.49,
+      "rating": 4.37,
+      "discountPercentage": 10.32,
+      "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Kiwi/thumbnail.png",
+      "category": "groceries"
+    },
+    {
+      "id": 31,
+      "title": "Lemon",
+      "price": 0.79,
+      "rating": 4.25,
+      "discountPercentage": 17.81,
+      "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Lemon/thumbnail.png",
+      "category": "groceries"
+    },
+    {
+      "id": 32,
+      "title": "Milk",
+      "price": 3.49,
+      "rating": 3.14,
+      "discountPercentage": 15.09,
+      "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Milk/thumbnail.png",
+      "category": "groceries"
+    },
+    {
+      "id": 33,
+      "title": "Mulberry",
+      "price": 4.99,
+      "rating": 3.19,
+      "discountPercentage": 16.35,
+      "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Mulberry/thumbnail.png",
+      "category": "groceries"
+    },
+    {
+      "id": 34,
+      "title": "Nescafe Coffee",
+      "price": 7.99,
+      "rating": 2.54,
+      "discountPercentage": 11.65,
+      "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Nescafe%20Coffee/thumbnail.png",
+      "category": "groceries"
+    },
+    {
+      "id": 35,
+      "title": "Potatoes",
+      "price": 2.29,
+      "rating": 3.82,
+      "discountPercentage": 4.05,
+      "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Potatoes/thumbnail.png",
+      "category": "groceries"
+    },
+    {
+      "id": 36,
+      "title": "Protein Powder",
+      "price": 19.99,
+      "rating": 3.91,
+      "discountPercentage": 1.58,
+      "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Protein%20Powder/thumbnail.png",
+      "category": "groceries"
+    },
+    {
+      "id": 37,
+      "title": "Red Onions",
+      "price": 1.99,
+      "rating": 4.08,
+      "discountPercentage": 17.89,
+      "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Red%20Onions/thumbnail.png",
+      "category": "groceries"
+    },
+    {
+      "id": 38,
+      "title": "Rice",
+      "price": 5.99,
+      "rating": 3.94,
+      "discountPercentage": 12.02,
+      "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Rice/thumbnail.png",
+      "category": "groceries"
+    },
+    {
+      "id": 39,
+      "title": "Soft Drinks",
+      "price": 1.99,
+      "rating": 4.59,
+      "discountPercentage": 1.88,
+      "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Soft%20Drinks/thumbnail.png",
+      "category": "groceries"
+    },
+    {
+      "id": 40,
+      "title": "Strawberry",
+      "price": 3.99,
+      "rating": 4.5,
+      "discountPercentage": 19.59,
+      "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Strawberry/thumbnail.png",
+      "category": "groceries"
+    }
+  ]
+}
