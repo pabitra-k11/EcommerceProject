@@ -2,6 +2,8 @@ import React from 'react'
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, ShoppingCartIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { selecAddtoCart } from '../cart/CartSlice'
 
 const user = {
   name: 'Tom Cook',
@@ -16,9 +18,9 @@ const navigation = [
  
 ]
 const userNavigation = [
-  { name: 'Your Profile', href: '#' },
-  { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' },
+  { name: 'Your Profile', link: '/' },
+  { name: 'Settings', link: '/' },
+  { name: 'Sign out', link: '/login' },
 ]
 
 function classNames(...classes) {
@@ -26,7 +28,7 @@ function classNames(...classes) {
 }
 
 const Navbar = ({ children }) => {
-
+const items =useSelector(selecAddtoCart);
   return (
     <>
               <div className="min-h-full">
@@ -74,7 +76,7 @@ const Navbar = ({ children }) => {
                   </button>
                   </Link>
                   <span className="absolute inline-flex items-center px-2 py-1 text-lg font-medium text-red-700 rounded-md mb-7 ly-1 ring-1 ring-inset ring-red-600/10">
-        0
+        {items.length}
       </span>
 
                   {/* Profile dropdown */}
@@ -92,12 +94,12 @@ const Navbar = ({ children }) => {
                     >
                       {userNavigation.map((item) => (
                         <MenuItem key={item.name}>
-                          <a
-                            href={item.href}
+                          <Link
+                            to={item.link}
                             className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100"
                           >
                             {item.name}
-                          </a>
+                          </Link>
                         </MenuItem>
                       ))}
                     </MenuItems>
@@ -153,7 +155,7 @@ const Navbar = ({ children }) => {
                 </button>
                 </Link>
                 <span className="absolute inline-flex items-center px-2 py-1 text-lg font-medium text-red-700 rounded-md mb-7 ly-1 ring-1 ring-inset ring-red-600/10">
-        0
+        {items.length}
       </span>
               </div>
               <div className="px-2 mt-3 space-y-1">

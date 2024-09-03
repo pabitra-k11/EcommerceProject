@@ -1,62 +1,29 @@
 
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { StarIcon } from '@heroicons/react/20/solid'
 import { Radio, RadioGroup } from '@headlessui/react'
-import { Link } from 'react-router-dom'
-
-const product = {
-  name: 'Basic Tee 6-Pack',
-  price: '$192',
-  href: '#',
-  breadcrumbs: [
-    { id: 1, name: 'Men', href: '#' },
-    { id: 2, name: 'Clothing', href: '#' },
-  ],
-  images: [
-    {
-      src: 'https://tailwindui.com/img/ecommerce-images/product-page-02-secondary-product-shot.jpg',
-      alt: 'Two each of gray, white, and black shirts laying flat.',
-    },
-    {
-      src: 'https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-01.jpg',
-      alt: 'Model wearing plain black basic tee.',
-    },
-    {
-      src: 'https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-02.jpg',
-      alt: 'Model wearing plain gray basic tee.',
-    },
-    {
-      src: 'https://tailwindui.com/img/ecommerce-images/product-page-02-featured-product-shot.jpg',
-      alt: 'Model wearing plain white basic tee.',
-    },
-  ],
-  colors: [
-    { name: 'White', class: 'bg-white', selectedClass: 'ring-gray-400' },
-    { name: 'Gray', class: 'bg-gray-200', selectedClass: 'ring-gray-400' },
-    { name: 'Black', class: 'bg-gray-900', selectedClass: 'ring-gray-900' },
-  ],
-  sizes: [
-    { name: 'XXS', inStock: false },
-    { name: 'XS', inStock: true },
-    { name: 'S', inStock: true },
-    { name: 'M', inStock: true },
-    { name: 'L', inStock: true },
-    { name: 'XL', inStock: true },
-    { name: '2XL', inStock: true },
-    { name: '3XL', inStock: true },
-  ],
-  description:
-    'The Basic Tee 6-Pack allows you to fully express your vibrant personality with three grayscale options. Feeling adventurous? Put on a heather gray tee. Want to be a trendsetter? Try our exclusive colorway: "Black". Need to add an extra pop of color to your outfit? Our white tee has you covered.',
-  highlights: [
-    'Hand cut and sewn locally',
-    'Dyed with our proprietary colors',
-    'Pre-washed & pre-shrunk',
-    'Ultra-soft 100% cotton',
-  ],
-  details:
-    'The 6-Pack includes two black, two white, and two heather gray Basic Tees. Sign up for our subscription service and be the first to get new, exciting colors, like our upcoming "Charcoal Gray" limited release.',
-}
+import { Link, useParams } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchAllProductByIdAsync, selectProductById } from '../productListSlice';
+import { addToCartAsync } from '../../cart/CartSlice';
+import {selectLoggedInUser} from '../../auth/AuthSlice'
+//TODO: in server data we will add colors, sizes, hilights to each products
+const colors= [
+  { name: 'White', class: 'bg-white', selectedClass: 'ring-gray-400' },
+  { name: 'Gray', class: 'bg-gray-200', selectedClass: 'ring-gray-400' },
+  { name: 'Black', class: 'bg-gray-900', selectedClass: 'ring-gray-900' },
+];
+const sizes= [
+  { name: 'XXS', inStock: false },
+  { name: 'XS', inStock: true },
+  { name: 'S', inStock: true },
+  { name: 'M', inStock: true },
+  { name: 'L', inStock: true },
+  { name: 'XL', inStock: true },
+  { name: '2XL', inStock: true },
+  { name: '3XL', inStock: true },
+];
 const reviews = { href: '#', average: 4, totalCount: 117 }
 
 function classNames(...classes) {
@@ -64,15 +31,31 @@ function classNames(...classes) {
 }
 
 export default function ProductDetail() {
-  const [selectedColor, setSelectedColor] = useState(product.colors[0])
-  const [selectedSize, setSelectedSize] = useState(product.sizes[2])
+  const [selectedColor, setSelectedColor] = useState(colors[0]);
+  const [selectedSize, setSelectedSize] = useState(sizes[2]);
+  const product =useSelector(selectProductById);
+  const user=useSelector(selectLoggedInUser)
+  const dispatch=useDispatch();
+  const params=useParams();
 
+  useEffect(()=>{
+    dispatch(fetchAllProductByIdAsync(params.id));
+  },[dispatch,params.id]);
+
+  const handleCart=(e)=>{
+    e.preventDefault();
+    dispatch(addToCartAsync({...product,quantity:1,user:user.id}));
+
+  }
+  
   return (
     <div className="bg-white">
+      {
+     product &&
       <div className="pt-6">
         <nav aria-label="Breadcrumb">
           <ol role="list" className="flex items-center max-w-2xl px-4 mx-auto space-x-2 sm:px-6 lg:max-w-7xl lg:px-8">
-            {product.breadcrumbs.map((breadcrumb) => (
+            {product.breadcrumbs && product.breadcrumbs.map((breadcrumb) => (
               <li key={breadcrumb.id}>
                 <div className="flex items-center">
                   <a href={breadcrumb.href} className="mr-2 text-sm font-medium text-gray-900">
@@ -103,31 +86,31 @@ export default function ProductDetail() {
         <div className="max-w-2xl mx-auto mt-6 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
           <div className="hidden overflow-hidden rounded-lg aspect-h-4 aspect-w-3 lg:block">
             <img
-              alt={product.images[0].alt}
-              src={product.images[0].src}
+              src={product.images[0]}
+              alt={product.title}
               className="object-cover object-center w-full h-full"
             />
           </div>
           <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
             <div className="overflow-hidden rounded-lg aspect-h-2 aspect-w-3">
               <img
-                alt={product.images[1].alt}
-                src={product.images[1].src}
+              src={product.images[1]}
+              alt={product.title}
                 className="object-cover object-center w-full h-full"
               />
             </div>
             <div className="overflow-hidden rounded-lg aspect-h-2 aspect-w-3">
               <img
-                alt={product.images[2].alt}
-                src={product.images[2].src}
+              src={product.images[2]}
+              alt={product.title}
                 className="object-cover object-center w-full h-full"
               />
             </div>
           </div>
           <div className="aspect-h-5 aspect-w-4 lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg">
             <img
-              alt={product.images[3].alt}
-              src={product.images[3].src}
+              src={product.images[3]}
+              alt={product.title}
               className="object-cover object-center w-full h-full"
             />
           </div>
@@ -142,7 +125,7 @@ export default function ProductDetail() {
           {/* Options */}
           <div className="mt-4 lg:row-span-3 lg:mt-0">
             <h2 className="sr-only">Product information</h2>
-            <p className="text-3xl tracking-tight text-gray-900">{product.price}</p>
+            <p className="text-3xl tracking-tight text-gray-900">${product.price}</p>
 
             {/* Reviews */}
             <div className="mt-6">
@@ -154,16 +137,14 @@ export default function ProductDetail() {
                       key={rating}
                       aria-hidden="true"
                       className={classNames(
-                        reviews.average > rating ? 'text-gray-900' : 'text-gray-200',
+                       product.rating > rating ? 'text-gray-900' : 'text-gray-200',
                         'h-5 w-5 flex-shrink-0',
                       )}
                     />
                   ))}
                 </div>
-                <p className="sr-only">{reviews.average} out of 5 stars</p>
-                <a href={reviews.href} className="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500">
-                  {reviews.totalCount} reviews
-                </a>
+                <p className="sr-only">{ product.rating} out of 5 stars</p>
+              
               </div>
             </div>
 
@@ -174,7 +155,7 @@ export default function ProductDetail() {
 
                 <fieldset aria-label="Choose a color" className="mt-4">
                   <RadioGroup value={selectedColor} onChange={setSelectedColor} className="flex items-center space-x-3">
-                    {product.colors.map((color) => (
+                    {colors.map((color) => (
                       <Radio
                         key={color.name}
                         value={color}
@@ -212,7 +193,7 @@ export default function ProductDetail() {
                     onChange={setSelectedSize}
                     className="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4"
                   >
-                    {product.sizes.map((size) => (
+                    {sizes.map((size) => (
                       <Radio
                         key={size.name}
                         value={size}
@@ -250,14 +231,15 @@ export default function ProductDetail() {
                   </RadioGroup>
                 </fieldset>
               </div>
-                <Link to="/cart">
+          
               <button
+                onClick={handleCart}
                 type="submit"
                 className="flex items-center justify-center w-full px-8 py-3 mt-10 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                >
                 Add to Cart
               </button>
-              </Link>
+
             </form>
           </div>
 
@@ -276,7 +258,7 @@ export default function ProductDetail() {
 
               <div className="mt-4">
                 <ul role="list" className="pl-4 space-y-2 text-sm list-disc">
-                  {product.highlights.map((highlight) => (
+                  {product.highlights && product.highlights.map((highlight) => (
                     <li key={highlight} className="text-gray-400">
                       <span className="text-gray-600">{highlight}</span>
                     </li>
@@ -289,12 +271,13 @@ export default function ProductDetail() {
               <h2 className="text-sm font-medium text-gray-900">Details</h2>
 
               <div className="mt-4 space-y-6">
-                <p className="text-sm text-gray-600">{product.details}</p>
+                <p className="text-sm text-gray-600">{product.description}</p>
               </div>
             </div>
           </div>
         </div>
       </div>
+}
     </div>
   )
 }

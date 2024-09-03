@@ -1,27 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import React, { useEffect } from 'react';
+
 import './App.css';
 
 import Home from './pages/Home';
 import LoginPage from './pages/LoginPage';
 import SignuPage from './pages/SignuPage';
-import { createRoot } from "react-dom/client";
 import {
   createBrowserRouter,
   RouterProvider,
-  Route,
-  Link,
+
 } from "react-router-dom";
 import Cart from './features/cart/Cart';
 import Checkout from './pages/Checkout';
 import ProductDetailPage from './pages/ProductDetailPage';
+import Protected from './features/auth/component/Protected';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectLoggedInUser } from './features/auth/AuthSlice';
+import { fetchAllItemsByuserIdAsync } from './features/cart/CartSlice';
+import PageNotFound from './pages/404';
+import OrderSuccessPage from './pages/OrderSuccessPage';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <Home/>
+      <Protected>
+           <Home/>
+      </Protected>
+     
     ),
   },
   {
@@ -29,27 +35,43 @@ const router = createBrowserRouter([
     element: (<LoginPage/>),
   },
   {
-    path: "/signup",
-    element: (<SignuPage/>),
+    path: "/signup",element
+    : (<SignuPage/>),
   },
   {
     
     path: "/cart",
-    element: (<Cart/>),
+    element: (<Protected><Cart/></Protected>),
   },
   {
    
     path: "/checkout",
-    element: (<Checkout/>),
+    element: (<Protected><Checkout/></Protected>),
   },
   {
    
-    path: "/product-detail",
-    element: (<ProductDetailPage/>),
+    path: "/product-detail/:id",
+    element: (<Protected><ProductDetailPage/></Protected>),
   },
+  {
+    path:'/order-success/:id',
+    element:(<OrderSuccessPage></OrderSuccessPage>)
+  },
+  {
+    path:'*',
+    element:(<PageNotFound></PageNotFound>)
+  }
 ]);
 
 function App() {
+  const dispatch=useDispatch();
+  const user=useSelector(selectLoggedInUser);
+
+  useEffect(() => {
+    if (user && user.id) {  // Check if user and user.id exist
+      dispatch(fetchAllItemsByuserIdAsync(user.id));
+    }
+  }, [dispatch, user]);
   return (
     <div className="App">
        <RouterProvider router={router} />
